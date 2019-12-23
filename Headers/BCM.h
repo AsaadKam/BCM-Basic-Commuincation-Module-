@@ -9,6 +9,7 @@
 #define BCM_H_
 
 /*- INCLUDES -----------------------------------------------*/
+#include"BCM_USER_INTERFACE.h"
 #include"UART.h"
 #include"Data_Types.h"
 /*- CONSTANTS ----------------------------------------------*/
@@ -16,13 +17,6 @@
 /*- ENUMS --------------------------------------------------*/
 /*- STRUCTS AND UNIONS -------------------------------------*/
 /*- FUNCTION-LIKE MACROS -----------------------------------*/
-/*- FUNCTION DECLARATIONS ----------------------------------*/
 
-void BCM_Init();
-void BCM_Send();
-void BCM_Setup_Receive();
-void BCM_RxDispatcher();
-void BCM_TxDispatcher();
-void BCM_RxUnlock();
 /*Packer[Command-Size-Data-CS]*/
 #endif

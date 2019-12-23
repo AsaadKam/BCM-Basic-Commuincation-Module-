@@ -100,8 +100,14 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Service/BCM_PostBConfig.o
  .data          0x0000000000000000        0x0 Service/BCM_PostBConfig.o
  .bss           0x0000000000000000        0x0 Service/BCM_PostBConfig.o
- .debug_line    0x0000000000000000        0x0 Service/BCM_PostBConfig.o
- .debug_str     0x0000000000000000       0xf1 Service/BCM_PostBConfig.o
+ .rodata.BCM_UART_TX_Trans_Config
+                0x0000000000000000        0x6 Service/BCM_PostBConfig.o
+ .debug_info    0x0000000000000000      0x100 Service/BCM_PostBConfig.o
+ .debug_abbrev  0x0000000000000000       0x7e Service/BCM_PostBConfig.o
+ .debug_aranges
+                0x0000000000000000       0x18 Service/BCM_PostBConfig.o
+ .debug_line    0x0000000000000000       0x85 Service/BCM_PostBConfig.o
+ .debug_str     0x0000000000000000      0x1fa Service/BCM_PostBConfig.o
  .comment       0x0000000000000000       0x12 Service/BCM_PostBConfig.o
  .text          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
  .data          0x0000000000000000        0x0 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
@@ -517,35 +523,35 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000      0xbbc
+.debug_info     0x0000000000000000      0xcea
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_info    0x00000000000004e6       0xef AAL/APP.o
  .debug_info    0x00000000000005d5      0x466 MCAL/UART.o
- .debug_info    0x0000000000000a3b      0x10f Service/BCM.o
- .debug_info    0x0000000000000b4a       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_info    0x0000000000000b70       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_info    0x0000000000000b96       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_info    0x0000000000000a3b      0x23d Service/BCM.o
+ .debug_info    0x0000000000000c78       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_info    0x0000000000000c9e       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_info    0x0000000000000cc4       0x26 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
 
-.debug_abbrev   0x0000000000000000      0x7d0
+.debug_abbrev   0x0000000000000000      0x86e
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_abbrev  0x00000000000004a3       0xae AAL/APP.o
  .debug_abbrev  0x0000000000000551      0x1d8 MCAL/UART.o
- .debug_abbrev  0x0000000000000729       0x6b Service/BCM.o
- .debug_abbrev  0x0000000000000794       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_abbrev  0x00000000000007a8       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_abbrev  0x00000000000007bc       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x0000000000000729      0x109 Service/BCM.o
+ .debug_abbrev  0x0000000000000832       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_abbrev  0x0000000000000846       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_abbrev  0x000000000000085a       0x14 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
 
-.debug_line     0x0000000000000000      0xa41
+.debug_line     0x0000000000000000      0xa8c
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
- .debug_line    0x0000000000000115       0x91 AAL/APP.o
- .debug_line    0x00000000000001a6      0x638 MCAL/UART.o
- .debug_line    0x00000000000007de       0xe6 Service/BCM.o
- .debug_line    0x00000000000008c4       0x61 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_line    0x0000000000000925       0x97 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_line    0x00000000000009bc       0x85 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_line    0x0000000000000115       0xa0 AAL/APP.o
+ .debug_line    0x00000000000001b5      0x638 MCAL/UART.o
+ .debug_line    0x00000000000007ed      0x122 Service/BCM.o
+ .debug_line    0x000000000000090f       0x61 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_line    0x0000000000000970       0x97 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_line    0x0000000000000a07       0x85 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
 
 .debug_frame    0x0000000000000000      0x13c
  *(.debug_frame)
@@ -553,22 +559,23 @@ END GROUP
  .debug_frame   0x0000000000000024       0xa4 MCAL/UART.o
  .debug_frame   0x00000000000000c8       0x74 Service/BCM.o
 
-.debug_str      0x0000000000000000      0x5d0
+.debug_str      0x0000000000000000      0x6fa
  *(.debug_str)
  .debug_str     0x0000000000000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32/avr5/crtatmega32.o
  .debug_str     0x0000000000000196      0x193 AAL/APP.o
                                         0x1b8 (size before relaxing)
  .debug_str     0x0000000000000329      0x1f2 MCAL/UART.o
                                         0x37a (size before relaxing)
- .debug_str     0x000000000000051b       0x53 Service/BCM.o
-                                        0x1ec (size before relaxing)
- .debug_str     0x000000000000056e       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
- .debug_str     0x00000000000005d0       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
- .debug_str     0x00000000000005d0       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
+ .debug_str     0x000000000000051b      0x17d Service/BCM.o
+                                        0x31d (size before relaxing)
+ .debug_str     0x0000000000000698       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_exit.o)
+ .debug_str     0x00000000000006fa       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_copy_data.o)
+ .debug_str     0x00000000000006fa       0x62 d:/folders/sprint/gcc compiler and avrdude/avr-gcc-9.2.0-x64-mingw/avr-gcc-9.2.0-x64-mingw/bin/../lib/gcc/avr/9.2.0/avr5\libgcc.a(_clear_bss.o)
 
-.debug_loc      0x0000000000000000      0x129
+.debug_loc      0x0000000000000000      0x17d
  *(.debug_loc)
  .debug_loc     0x0000000000000000      0x129 MCAL/UART.o
+ .debug_loc     0x0000000000000129       0x54 Service/BCM.o
 
 .debug_macinfo
  *(.debug_macinfo)

@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000118  00000000  00000000  00000180  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000bbc  00000000  00000000  00000298  2**0
+  6 .debug_info   00000cea  00000000  00000000  00000298  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007d0  00000000  00000000  00000e54  2**0
+  7 .debug_abbrev 0000086e  00000000  00000000  00000f82  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000a41  00000000  00000000  00001624  2**0
+  8 .debug_line   00000a8c  00000000  00000000  000017f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000013c  00000000  00000000  00002068  2**2
+  9 .debug_frame  0000013c  00000000  00000000  0000227c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000005d0  00000000  00000000  000021a4  2**0
+ 10 .debug_str    000006fa  00000000  00000000  000023b8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000129  00000000  00000000  00002774  2**0
+ 11 .debug_loc    0000017d  00000000  00000000  00002ab2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a0  00000000  00000000  0000289d  2**0
+ 12 .debug_ranges 000000a0  00000000  00000000  00002c2f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -153,11 +153,11 @@ gu8_Uart_send_char_counter++;
   b4:	18 95       	reti
 
 000000b6 <BCM_TxDispatcher>:
-void BCM_RxDispatcher()
-{
-}
-void BCM_TxDispatcher()
-{
+	 /**Firstly,send the ID***/
+	 /**Secondly,send the Size***/
+	 /***thirdly,send byte by byte***/
+	 /***Fourthly send the checksum***/
+	
 }
   b6:	08 95       	ret
 
