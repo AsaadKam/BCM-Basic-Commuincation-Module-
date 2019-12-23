@@ -1,0 +1,168 @@
+
+BCM.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000bc  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000130  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000003  00800060  00800060  00000130  2**0
+                  ALLOC
+  3 .comment      00000011  00000000  00000000  00000130  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000144  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000118  00000000  00000000  00000180  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000bbc  00000000  00000000  00000298  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007d0  00000000  00000000  00000e54  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000a41  00000000  00000000  00001624  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000013c  00000000  00000000  00002068  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000005d0  00000000  00000000  000021a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000129  00000000  00000000  00002774  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a0  00000000  00000000  0000289d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 4c 00 	jmp	0x98	; 0x98 <__vector_13>
+  38:	0c 94 55 00 	jmp	0xaa	; 0xaa <__vector_14>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec eb       	ldi	r30, 0xBC	; 188
+  68:	f0 e0       	ldi	r31, 0x00	; 0
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a3 36       	cpi	r26, 0x63	; 99
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 5c 00 	jmp	0xb8	; 0xb8 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+	
+	while(1)
+	{
+		/*BCM_Send(u8_BCM_array,BCM_ARR_SIZE);*/
+		/*BCM transmiter mangaer start it's work */
+		BCM_TxDispatcher();
+  92:	0e 94 5b 00 	call	0xb6	; 0xb6 <BCM_TxDispatcher>
+	while(1)
+  96:	fd cf       	rjmp	.-6      	; 0x92 <main>
+
+00000098 <__vector_13>:
+#endif
+
+/*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
+
+void __vector_13(void)
+{
+  98:	8f 93       	push	r24
+
+ #if UART_ISR_WITH_FLAG==FLAG
+
+gu8_Uart_rec_char_flag=1U;
+  9a:	81 e0       	ldi	r24, 0x01	; 1
+  9c:	80 93 61 00 	sts	0x0061, r24	; 0x800061 <gu8_Uart_rec_char_flag>
+#elif UART_ISR_WITH_FLAG==COUNTER
+
+gu8_Uart_rec_char_counter++;
+
+#endif
+sgu8_UART_REC_BYTE=UART_DATA_REGISTER;
+  a0:	8c b1       	in	r24, 0x0c	; 12
+  a2:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <sgu8_UART_REC_BYTE>
+	/*DIO_toggle_Pin(0);*/
+}
+  a6:	8f 91       	pop	r24
+  a8:	18 95       	reti
+
+000000aa <__vector_14>:
+
+void __vector_14(void)
+{
+  aa:	8f 93       	push	r24
+#if (UART_ISR_WITH_FLAG==FLAG)
+
+gu8_Uart_send_char_flag=1U;
+  ac:	81 e0       	ldi	r24, 0x01	; 1
+  ae:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__data_end>
+gu8_Uart_send_char_counter++;
+
+#endif
+
+	/*DIO_toggle_Pin(1);*/
+}
+  b2:	8f 91       	pop	r24
+  b4:	18 95       	reti
+
+000000b6 <BCM_TxDispatcher>:
+void BCM_RxDispatcher()
+{
+}
+void BCM_TxDispatcher()
+{
+}
+  b6:	08 95       	ret
+
+000000b8 <_exit>:
+  b8:	f8 94       	cli
+
+000000ba <__stop_program>:
+  ba:	ff cf       	rjmp	.-2      	; 0xba <__stop_program>
