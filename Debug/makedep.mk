@@ -10,7 +10,9 @@ MCAL\DIO.c
 MCAL\Timer.c
 
 MCAL\UART.c
-MCAL\UART_PostBConfig.cS
+
+MCAL\UART_PostBConfig.c
 
 Service\BCM.c
+
 Service\BCM_PostBConfig.c

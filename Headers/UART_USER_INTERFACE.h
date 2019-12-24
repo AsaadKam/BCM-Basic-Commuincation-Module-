@@ -1,14 +1,32 @@
 #ifndef UART_USER_INTERFACE_H_
 #define UART_USER_INTERFACE_H_
 
-#include "Data_types.h"
-/*- UART User Data types ----------------------------------------*/
+/*- Includes---------------------------------------------------------*/
 
+#include "Data_types.h"
+
+/*- GLOBAL EXTERN VARIABLES -------------------------------*/
+/****NEEDED TO USE UART WITH COUNT OR ISR****/
+#define COUNTER                         1
+#define FLAG                            2
+#define CALLBACK                        3
+
+#ifndef UART_ISR_WITH_FLAG
+#define UART_ISR_WITH_FLAG COUNTER
+#endif 
+
+
+#if UART_ISR_WITH_FLAG==FLAG
+extern volatile uint8_t gu8_Uart_rec_char_flag;
+extern volatile uint8_t gu8_Uart_send_char_flag;
+#elif UART_ISR_WITH_FLAG==COUNTER
+extern volatile uint8_t gu8_Uart_rec_char_counter;
+extern volatile uint8_t gu8_Uart_send_char_counter;
+#endif
+
+/*- UART User Data types --------------------------------------------*/
 
 /***Structure of config*****/
-typedef uint8_t UART_Error_t ;
- /***UART_ERRORs****/	
-#define  UART_ERROR_NULL_POINTER                    12
 typedef struct
 {
 uint8_t  Trasmit;
@@ -21,11 +39,17 @@ uint8_t  InterruptMode;
 
 }UART_Confg_Stuct_t;
 
+/***UART_ERROR_TYPE****/	
+typedef uint8_t UART_Error_t ;
+typedef uint8_t UART_TRANS_STATE_t;
+typedef uint8_t UART_TRANS_REC_STATE_t;
+/*- Defines --------------------------------------------------------*/
+
 /******Trasmit*********/
 #define UART_trasmit_Enable	                       13
-#define UART_Receive_Enable			               14
+#define UART_trasmit_Disable			           14
 /******Reciever*********/
-#define UART_trasmit_Disable	                   15
+#define UART_Receive_Enable 	                   15
 #define UART_Receive_Disable			           16
 /****(Baud Rate Adjust speed of UART)****/
 #define _bps_2400_    207U
@@ -58,21 +82,24 @@ uint8_t  InterruptMode;
 /**interrupt or polling mode**/
 #define UART_Interrupt_mode_enable	               10  
 #define UART_Polling_mode_enable	               11 		
-
+/***UART_ERRORs****/
+#define  UART_ERROR_NULL_POINTER                    12
+/***For setCallbackfunction***/
 #define UART_HAS_NO_TX_ISR                         NullPointer
 #define UART_HAS_NO_RX_ISR                         NullPointer
 
 
 
+/*- FUNCTION DECLARATIONS -------------------------------------------------*/
 
-/*- FUNCTION DECLARATIONS ----------------------------------*/
+
 extern UART_Error_t UART_SetCallBack(PntrToFunc_t PntrToFunc_Copy_UART_tX_USER_ISR,PntrToFunc_t PntrToFunc_Copy_UART_RX_USER_ISR);
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: It initiates the UART from pointer to configuration of UART
  * Input     : (char_t* pchar_index)It takes pointer to char
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
-extern UART_Error_t UART_Init(const UART_Confg_Stuct_t* pstr_Config_UART);
+extern UART_Error_t UART_Init(UART_Confg_Stuct_t* pstr_Config_UART);
 /*_______________________________________________________________________________________________________________________________*/
 /*Description: It transmites character through UART
  * Input     : (char_t pchar_index)It takes  char
@@ -93,7 +120,10 @@ extern UART_Error_t UART_SendString(uint8_t* pchar_index);
  *_______________________________________________________________________________________________________________________________*/
 extern UART_Error_t UART_RecByte(uint8_t* pchar_index);
 /*uint8_t UART_Print_Float(float32_t float32_FloatNumber);*/
-
+extern UART_TRANS_STATE_t  UART_BYTE_TRASMITTED(void);
 /*- FUNCTION-LIKE MACROS -----------------------------------*/
-#define UART_Print_Float(N)       UART_SendString(ConvertFloatToString(N))
+
+#define UART_Print_Float(N)         UART_SendString(ConvertFloatToString(N))
+
+
 #endif

@@ -4,7 +4,7 @@
 /*- Defines -----------------------------------------------*/
 
 
-#define UART_ISR_WITH_FLAG       FLAG 
+#define UART_ISR_WITH_FLAG       CALLBACK 
 
 
 

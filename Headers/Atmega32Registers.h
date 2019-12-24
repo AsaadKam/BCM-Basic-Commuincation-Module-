@@ -41,6 +41,7 @@
 #define RXCIE    7
 #define UCSRA   ( *((volatile uint8_t* )(0X2B)) )
 #define UDRE     5
+#define TXC      6
 #define RXC      7
 #define UDR     ( *((volatile uint8_t* )(0X2C)) )
 

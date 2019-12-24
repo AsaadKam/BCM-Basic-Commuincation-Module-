@@ -7,8 +7,9 @@
 #include"BitManipulation.h"
 
 /*- LOCAL MACROS ------------------------------------------*/
-#define  UART_RXC_Enable_INT()          SET_BIT(UART_CNTRL_STATUS_REG_B,UART_RX_Complete_Interrupt_Enable) 
-#define  UART_UDRE_Enable_INT()         SET_BIT(UART_CNTRL_STATUS_REG_B,UART_Data_REG_Empty_Interrupt_Enable)
+#define  UART_RXC_Enable_INT()         SET_BIT(UART_CNTRL_STATUS_REG_B,UART_RX_Complete_Interrupt_Enable) 
+#define  UART_TXC_Enable_INT()         SET_BIT(UART_CNTRL_STATUS_REG_B,UART_tX_Complete_Interrupt_Enable)
+#define  UART_TXC_Disable_INT()        CLR_BIT(UART_CNTRL_STATUS_REG_B,UART_tX_Complete_Interrupt_Enable) 
 /*- LOCAL Dataypes ----------------------------------------*/
 /*- LOCAL FUNCTIONS PROTOTYPES ----------------------------*/
 
@@ -27,11 +28,11 @@ static uint8_t sgu8_UART_Transimter_enable=0;
 /*- GLOBAL EXTERN VARIABLES -------------------------------*/
 
  #if UART_ISR_WITH_FLAG==FLAG
-volatile uint8_t gu8_Uart_rec_char_flag=0U;
-volatile uint8_t gu8_Uart_send_char_flag=0U;
+volatile uint8_t gu8_Uart_rec_char_flag=0;
+volatile uint8_t gu8_Uart_send_char_flag=0;
 #elif UART_ISR_WITH_FLAG==COUNTER
-volatile uint8_t gu8_Uart_rec_char_counter=0U;
-volatile uint8_t gu8_Uart_send_char_counter=0U;
+volatile uint8_t gu8_Uart_rec_char_counter=0;
+volatile uint8_t gu8_Uart_send_char_counter=0;
 #endif
 
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
@@ -46,25 +47,27 @@ gu8_Uart_rec_char_flag=1U;
 #elif UART_ISR_WITH_FLAG==COUNTER
 
 gu8_Uart_rec_char_counter++;
-
+#elif UART_ISR_WITH_FLAG==CALLBACK
+gPntrToFunc_UART_RX_ISR();
 #endif
-sgu8_UART_REC_BYTE=UART_DATA_REGISTER;
-	/*DIO_toggle_Pin(0);*/
+
+	
 }
 
-void __vector_14(void)
+void __vector_15(void)
 {
+
 #if (UART_ISR_WITH_FLAG==FLAG)
 
 gu8_Uart_send_char_flag=1U;
 
 #elif (UART_ISR_WITH_FLAG==COUNTER)
 
-gu8_Uart_send_char_counter++;
+gu8_Uart_send_char_counter=1U;
 
 #endif
 
-	/*DIO_toggle_Pin(1);*/
+DIO_toggle_Pin(15);
 }
 
 /*- APIs IMPLEMENTATION -----------------------------------*/
@@ -100,7 +103,7 @@ UART_Error_t UART_SetCallBack(PntrToFunc_t PntrToFunc_Copy_UART_tX_USER_ISR, Pnt
  * Output    : Error Checking
  *_______________________________________________________________________________________________________________________________*/
 
-UART_Error_t UART_Init(const UART_Confg_Stuct_t* pstr_Config_UART)
+UART_Error_t UART_Init(UART_Confg_Stuct_t* pstr_Config_UART)
 {
 
     if(pstr_Config_UART!=NullPointer)
@@ -112,18 +115,14 @@ UART_Error_t UART_Init(const UART_Confg_Stuct_t* pstr_Config_UART)
 
 		if(pstr_Config_UART->Trasmit==UART_trasmit_Enable)
 		{
-			DIO_Write_Pin(6,1);
 			SET_BIT(UART_CNTRL_STATUS_REG_B,UART_transimter_EN_BIT);
-			
 		}
 		else
 		{
 		}
 		if(pstr_Config_UART->Reciever==UART_Receive_Enable)
 		{
-			DIO_Write_Pin(7,1);
 			SET_BIT(UART_CNTRL_STATUS_REG_B,UART_Reciever_EN_BIT);
-			
 		}	
 		else
 		{
@@ -183,7 +182,6 @@ UART_Error_t UART_Init(const UART_Confg_Stuct_t* pstr_Config_UART)
 		/**Check whether it is interrupt or polling mode**/
 		if(pstr_Config_UART->InterruptMode==UART_Interrupt_mode_enable)
 		{
-			DIO_Write_Pin(1,1);
 			sgu8_UART_Execution_Mode=UART_Interrupt_mode_enable;
 			/*Enable Global Interrupt*/
 			EnableGeneralInterrupt();
@@ -191,7 +189,6 @@ UART_Error_t UART_Init(const UART_Confg_Stuct_t* pstr_Config_UART)
 			/*Enable Receiver Interrupt*/
 		    if(pstr_Config_UART->Reciever==UART_Receive_Enable)
 			{
-				DIO_Write_Pin(2,1);
 		    	UART_RXC_Enable_INT();
 				sgu8_UART_Receiver_enable=UART_Receive_Enable;
 			}
@@ -202,8 +199,7 @@ UART_Error_t UART_Init(const UART_Confg_Stuct_t* pstr_Config_UART)
 			/*Enable Transimter Interrupt*/
 		    if(pstr_Config_UART->Trasmit==UART_trasmit_Enable)
 			{
-                DIO_Write_Pin(3,1);
-				UART_UDRE_Enable_INT();
+			    UART_TXC_Enable_INT();
 				sgu8_UART_Transimter_enable=UART_trasmit_Enable;
 			}
 			else
@@ -230,7 +226,6 @@ UART_Error_t UART_SendByte(uint8_t u8_Byte_UART)
 {
     if(sgu8_UART_Transimter_enable==UART_trasmit_Enable)
 	{
-		DIO_Write_Pin(4,1);
 		if(sgu8_UART_Execution_Mode==UART_Polling_mode_enable)
 		{
 		while ( !( UART_CNTRL_STATUS_REG_A & (1<<UART_DATA_REGISTER_EMPETY_FLAG)) );
@@ -298,5 +293,17 @@ UART_Error_t UART_RecByte(uint8_t* pchar_index)
 	{
 	}
 
+}
+UART_TRANS_REC_STATE_t  UART_BYTE_TRASMITTED(void)
+{
+	 uint8_t u8_BCM_Trans_state=BIT_IS_SET(UART_CNTRL_STATUS_REG_A,UART_Transmit_Complete_FLAG);
+	 SET_BIT(UART_CNTRL_STATUS_REG_A,UART_Transmit_Complete_FLAG);
+	 return u8_BCM_Trans_state;
+}
+UART_TRANS_REC_STATE_t  UART_Reception_State(void)
+{
+	 uint8_t u8_BCM_Rec_state=BIT_IS_SET(UART_CNTRL_STATUS_REG_A,UART_Receive_Complete_FLAG);
+	 SET_BIT(UART_CNTRL_STATUS_REG_A,UART_Receive_Complete_FLAG);
+	 return u8_BCM_Rec_state;
 }
 

@@ -39,7 +39,7 @@ SUBDIRS :=  \
 ../MCAL \
 ../Headers \
 ../AAL\
-..Service
+../Service
 
 
 
@@ -108,20 +108,20 @@ LINKER_SCRIPT_DEP+=
 Service/BCM_PostBConfig.o: ../Service/BCM_PostBConfig.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
-	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	echo Finished building: $<
 	
 Service/BCM.o: ../Service/BCM.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
-	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	echo Finished building: $<
 	
 	
 MCAL/UART.o: ../MCAL/UART.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
-	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	echo Finished building: $<
 	
 MCAL/UART_PostBConfig.o: ../MCAL/UART_PostBConfig.c
@@ -133,7 +133,7 @@ MCAL/UART_PostBConfig.o: ../MCAL/UART_PostBConfig.c
 MCAL/DIO.o: ../MCAL/DIO.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
-	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	echo Finished building: $<
 	
 
@@ -141,14 +141,14 @@ MCAL/DIO.o: ../MCAL/DIO.c
 MCAL/Timer.o: ../MCAL/Timer.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
-	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	echo Finished building: $<
 	
 
 AAL/APP.o: ../AAL/APP.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
-	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O1 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	echo Finished building: $<
 	
 	
