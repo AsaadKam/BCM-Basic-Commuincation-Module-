@@ -21,9 +21,13 @@ typedef   signed long         int64_t;
 typedef   float             float32_t;
 typedef   double            float64_t;
 typedef   long double      float128_t;
-typedef   void(*PntrToFunc_t)(void);   
+typedef   void(*PntrToFunc_t)  (void); 
+#define   NullPointer      ((void *)0)  
+typedef   uint8_t UART_Boalen_t;
+/***UART_Boalens****/
+#define   TRUE  1
+#define   FALSE 1
 
-#define   NullPointer      ((void *)0)
 
 
 #endif /* Data_types.h */

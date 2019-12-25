@@ -21,7 +21,7 @@
 #define UART_CNTRL_STATUS_REG_B                    UCSRB
 		 /***Interrupt Enable bits ***/
 #define UART_RX_Complete_Interrupt_Enable          RXCIE
-#define UART_tX_Complete_Interrupt_Enable          TXCIE
+#define UART_TX_Complete_Interrupt_Enable          TXCIE
 #define UART_Data_REG_Empty_Interrupt_Enable       UDRIE
 #define UART_CNTRL_STATUS_REG_C	                   UCSRC
 
@@ -41,10 +41,19 @@
 #define UART_Receive_Complete_FLAG                 RXC 
 #define UART_Transmit_Complete_FLAG                TXC
 
- 
 /*________________________________________________________________*/
 
 
+
+/*- GLOBAL EXTERN VARIABLES -------------------------------*/
+
+#if UART_ISR_WITH_FLAG==FLAG
+extern volatile uint8_t gu8_Uart_rec_char_flag;
+extern volatile uint8_t gu8_Uart_send_char_flag;
+#elif UART_ISR_WITH_FLAG==COUNTER
+extern volatile uint8_t gu8_Uart_rec_char_counter;
+extern volatile uint8_t gu8_Uart_send_char_counter;
+#endif
 
 
 

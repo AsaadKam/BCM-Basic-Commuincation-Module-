@@ -258,7 +258,6 @@ uint8_t DIO_INIT_Pin(uint8_t pin, uint8_t direction)
 	}
 return ERROR_OK;
 }
-
 uint8_t DIO_Read_Port (uint8_t por, uint8_t * ReadData)
 {
     switch(por)

@@ -5,6 +5,6 @@
 #include"BCM_USER_INTERFACE.h"
 
 extern const BCM_Config_t BCM_UART_TX_Trans_Config;
-									  
+extern const BCM_Config_t BCM_UART_RX_Trans_Config;								  
 									  
 #endif

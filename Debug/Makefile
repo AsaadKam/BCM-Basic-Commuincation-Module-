@@ -26,7 +26,7 @@ C_DEPS_AS_ARGS :=
 EXECUTABLES := 
 OUTPUT_FILE_PATH :=
 OUTPUT_FILE_PATH_AS_ARGS :=
-AVR_APP_PATH :=$$$AVR_APP_PATH$$$
+AVR_Receiver_PATH :=$$$AVR_Receiver_PATH$$$
 QUOTE := "
 ADDITIONAL_DEPENDENCIES:=
 OUTPUT_FILE_DEP:=
@@ -45,7 +45,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../AAL/APP.c \
+../AAL/BCM_APP.c \
 ../MCAL/DIO.c \
 ..MCAL/UART.c\
 ../MCAL/UART_PostBConfig.c\
@@ -59,7 +59,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-AAL/APP.o \
+AAL/BCM_APP.o \
 MCAL/DIO.o \
 MCAL/UART.o \
 MCAL/UART_PostBConfig.o\
@@ -67,7 +67,7 @@ Service/BCM.o \
 Service/BCM_PostBConfig.o 
 
 OBJS_AS_ARGS +=  \
-AAL/APP.o \
+AAL/BCM_APP.o \
 MCAL/DIO.o \
 MCAL/UART.o \
 MCAL/UART_PostBConfig.o\
@@ -75,7 +75,7 @@ Service/BCM.o \
 Service/BCM_PostBConfig.o 
  
 C_DEPS +=  \
-AAL/APP.d \
+AAL/BCM_APP.d \
 MCAL/DIO.d\
 MCAL/UART.d \
 MCAL/UART_PostBConfig.d\
@@ -83,7 +83,7 @@ Service/BCM.d\
 Service/BCM_PostBConfig.d 
  
 C_DEPS_AS_ARGS +=  \
-AAL/APP.d \
+AAL/BCM_APP.d \
 MCAL/DIO.d \
 MCAL/UART.d \
 MCAL/UART_PostBConfig.d\
@@ -145,7 +145,7 @@ MCAL/Timer.o: ../MCAL/Timer.c
 	echo Finished building: $<
 	
 
-AAL/APP.o: ../AAL/APP.c
+AAL/BCM_APP.o: ../AAL/BCM_APP.c
 	echo Building file: $<
 	echo Invoking: AVR/GNU C Compiler : 5.4.0
 	avr-gcc_a  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../Headers"  -O0 -ffunction-sections -Wa,-mgcc-isr -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

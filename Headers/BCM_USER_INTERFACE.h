@@ -36,14 +36,18 @@ typedef  struct
 /**********BCM_Reception**************/  
 #define BCM_Reception_Enable     UART_Receive_Enable    
 #define BCM_Reception_Disable    UART_Receive_Disable
+/**********Buffer IDS*******************/
+#define BCM_BUFFER_ID_0       0
+#define BCM_BUFFER_ID_1       1
+#define BCM_BUFFER_ID_2       2
 
 /*- FUNCTION DECLARATIONS ----------------------------------*/
 
 extern BCM_ERROR_t BCM_Init(BCM_Config_t* Copy_pBCM_Config);
-extern BCM_ERROR_t BCM_Send(uint8_t* Copy_pu8_BCM_TX_Buffer,uint8_t Copy_pu32_BCM_RX_Buffer);
-extern BCM_ERROR_t BCM_Setup_Receive(uint8_t* Copy_pu8_BCM_RX_Buffer,uint8_t Copy_pu32_BCM_RX_Buffer);
-extern BCM_ERROR_t BCM_RxDispatcher(void);
+extern BCM_ERROR_t BCM_Send(uint8_t* Copy_pu8_BCM_TX_Buffer,uint8_t Copy_u8_BCM_TX_Buffer);
+extern BCM_ERROR_t BCM_Setup_Receive(uint8_t* Copy_pu8_BCM_RX_Buffer,uint8_t Copy_u8_BCM_RX_Buffer);
 extern BCM_ERROR_t BCM_TxDispatcher(void);
-extern BCM_ERROR_t BCM_RxUnlock(void);
+extern BCM_ERROR_t BCM_RxDispatcher(PntrToFunc_t Copy_PntrToFun_RxDispatcher);
+extern BCM_ERROR_t BCM_RxUnlock(uint8_t*Copy_pu8_BCM_RX_Buffer);
 
 #endif /*_BCM_USER_INTERFACE_H_*/
