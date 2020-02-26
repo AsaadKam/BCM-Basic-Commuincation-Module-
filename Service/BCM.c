@@ -14,6 +14,7 @@
 /*- LOCAL Dataypes ----------------------------------------*/
 /*- LOCAL FUNCTIONS PROTOTYPES ----------------------------*/
 /*- GLOBAL STATIC VARIABLES -------------------------------*/
+
 static uint8_t*sgu8p_BCM_TX_BUFFER=NullPointer;
 static uint8_t  sgu8_BCM_ID=BCM_ID_0;
 static uint8_t  sgu8_BCM_TX_State=0;
@@ -35,7 +36,8 @@ static volatile uint32_t  sgu32_BCM_RX_BUFFER_INDEX=0,sgu32_BCM_RX_Buffer=0;
 /*- LOCAL FUNCTIONS IMPLEMENTATION ------------------------*/
 /*- APIs IMPLEMENTATION -----------------------------------*/
 
-/*********Called Back function of BCM****************/
+/*************Called Back function of BCM****************/
+
 /*****BCM UART RECEIVER CALL BACK FUNCTION IN ISR*****/
 void BCM_UART_REC_ISR(void)
 {
